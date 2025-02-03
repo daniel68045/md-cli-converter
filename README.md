@@ -1,4 +1,4 @@
-## md-to-html
+## md-2-html
 
 A simple CLI tool that lets you generate static HTML files from Markdown. Supports custom styles (`.css`) and custom templates (`.ejs`)
 
