@@ -1,6 +1,6 @@
-## Static Site CLI
+## md-to-html
 
-A simple md-to-html converter that lets you generate static HTML files from Markdown. Supports custom styles (`.css`) and custom templates (`.ejs`)
+A simple CLI tool that lets you generate static HTML files from Markdown. Supports custom styles (`.css`) and custom templates (`.ejs`)
 
 ## To Start
 
@@ -24,7 +24,7 @@ site/
 │── styles.css
 ```
 
-## Custom Styling (--css) - You can use your own CSS file instead of the default `styles.css`:
+## Custom Styling (`--css`) - You can use your own CSS file instead of the default `styles.css`:
 
 ```
 md-to-html notes.md --output site/ --css styles/custom.css
