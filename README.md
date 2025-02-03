@@ -1,4 +1,4 @@
-## md-2-html
+## md-cli-converter
 
 A simple CLI tool that lets you generate static HTML files from Markdown. Supports custom styles (`.css`) and custom templates (`.ejs`)
 

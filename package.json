@@ -1,5 +1,5 @@
 {
-  "name": "md-2-html",
+  "name": "md-cli-converter",
   "version": "1.0.0",
   "description": "A CLI tool that converts Markdown files into static HTML websites with customizable themes.",
   "main": "bin/index.js",
