@@ -1,0 +1,32 @@
+{
+  "name": "static-site-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool that converts Markdown files into static HTML websites with customizable themes.",
+  "main": "bin/index.js",
+  "bin": {
+    "md-to-html": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "keywords": [
+    "markdown",
+    "static-site",
+    "cli",
+    "html-generator",
+    "ejs"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "ejs": "^3.1.9",
+    "gray-matter": "^4.0.3",
+    "marked": "^9.1.4"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "assert": "^2.0.0"
+  }
+}
