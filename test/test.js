@@ -25,15 +25,10 @@ function setupTest() {
   fs.writeFileSync(testMdFile, testMarkdown);
 }
 
-function cleanupTest() {
-  if (fs.existsSync(testMdFile)) fs.unlinkSync(testMdFile);
-  if (fs.existsSync(outputHtmlFile)) fs.unlinkSync(outputHtmlFile);
-  if (fs.existsSync(outputDir)) fs.rmdirSync(outputDir, { recursive: true });
-}
+
 
 describe("Static Site CLI Tests", function () {
   before(setupTest);
-  after(cleanupTest);
 
   it("should convert Markdown to HTML", function () {
     convertMarkdown(testMdFile, outputDir, "default");
