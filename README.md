@@ -4,10 +4,10 @@ A simple CLI tool that lets you generate static HTML files from Markdown. Suppor
 
 ## To Start
 
-Install globally from [npm](https://www.npmjs.com/):
+Install globally from [npm](https://www.npmjs.com/package/md-cli-converter):
 
 ```
-npm install -g static-site-cli
+npm install -g md-cli-converter
 ```
 
 Default use - convert a Markdown file (.md) into an HTML file:
