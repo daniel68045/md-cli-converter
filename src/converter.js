@@ -2,13 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { marked } = require("marked");
-const renderer = require("./renderer");
 
 function convertMarkdown(
   inputFile,
   outputDir = "./dist",
-  theme = "default",
-  customCss = null
+  customCss = null,
+  customTemplate = null
 ) {
   try {
     if (!fs.existsSync(inputFile)) {
@@ -23,11 +22,27 @@ function convertMarkdown(
     const markdownBody = parsed.content;
 
     const htmlContent = marked.parse(markdownBody);
-    const finalHtml = renderer.renderHTML(htmlContent, metadata, theme);
 
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
+
+    const templatePath = customTemplate
+      ? customTemplate
+      : path.join(__dirname, "../templates/themes/default.ejs");
+
+    if (!fs.existsSync(templatePath)) {
+      console.error(`Error: Template file "${templatePath}" not found.`);
+      process.exit(1);
+    }
+
+    const template = fs.readFileSync(templatePath, "utf-8");
+    const finalHtml = ejs.render(template, {
+      title: metadata.title || "Untitled Document",
+      author: metadata.author || "Unknown",
+      date: metadata.date || new Date().toISOString().split("T")[0],
+      content: htmlContent,
+    });
 
     let cssFileName = "styles.css";
 
@@ -38,6 +53,7 @@ function convertMarkdown(
     } else {
       const defaultCssSource = path.join(__dirname, "../public/styles.css");
       const defaultCssDest = path.join(outputDir, "styles.css");
+
       if (fs.existsSync(defaultCssSource) && !fs.existsSync(defaultCssDest)) {
         fs.copyFileSync(defaultCssSource, defaultCssDest);
       }
@@ -51,6 +67,7 @@ function convertMarkdown(
       outputFilePath,
       finalHtml.replace("styles.css", cssFileName)
     );
+    console.log(`✅ Converted ${inputFile} → ${outputFilePath}`);
   } catch (error) {
     console.error("Conversion error:", error);
   }

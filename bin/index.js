@@ -8,14 +8,17 @@ program
   .version("1.0.0")
   .arguments("<input>")
   .option("-o, --output <directory>", "Specify output directory", "./dist")
-  .option("-t, --theme <theme>", "Specify theme", "default")
   .option("--css <file>", "Specify a custom CSS file")
+  .option("--template <file>", "Specify a custom EJS template")
   .action((input, options) => {
     const inputPath = path.resolve(input);
     const outputPath = path.resolve(options.output);
     const cssFile = options.css ? path.resolve(options.css) : null;
+    const templateFile = options.template
+      ? path.resolve(options.template)
+      : null;
 
-    convertMarkdown(inputPath, outputPath, options.theme, cssFile);
+    convertMarkdown(inputPath, outputPath, cssFile, templateFile);
   });
 
 program.parse(process.argv);
