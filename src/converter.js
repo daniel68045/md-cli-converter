@@ -16,11 +16,9 @@ function convertMarkdown(
     }
 
     const fileContent = fs.readFileSync(inputFile, "utf-8");
-
     const parsed = matter(fileContent.trim(), { delimiters: "---" });
     const metadata = parsed.data || {};
     const markdownBody = parsed.content;
-
     const htmlContent = marked.parse(markdownBody);
 
     if (!fs.existsSync(outputDir)) {
@@ -30,7 +28,6 @@ function convertMarkdown(
     const templatePath = customTemplate
       ? customTemplate
       : path.join(__dirname, "../templates/themes/default.ejs");
-
     if (!fs.existsSync(templatePath)) {
       console.error(`Error: Template file "${templatePath}" not found.`);
       process.exit(1);
@@ -53,7 +50,6 @@ function convertMarkdown(
     } else {
       const defaultCssSource = path.join(__dirname, "../public/styles.css");
       const defaultCssDest = path.join(outputDir, "styles.css");
-
       if (fs.existsSync(defaultCssSource) && !fs.existsSync(defaultCssDest)) {
         fs.copyFileSync(defaultCssSource, defaultCssDest);
       }
@@ -67,7 +63,6 @@ function convertMarkdown(
       outputFilePath,
       finalHtml.replace("styles.css", cssFileName)
     );
-    console.log(`✅ Converted ${inputFile} → ${outputFilePath}`);
   } catch (error) {
     console.error("Conversion error:", error);
   }

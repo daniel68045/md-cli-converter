@@ -17,7 +17,6 @@ program
     const templateFile = options.template
       ? path.resolve(options.template)
       : null;
-
     convertMarkdown(inputPath, outputPath, cssFile, templateFile);
   });
 

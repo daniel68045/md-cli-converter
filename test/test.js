@@ -25,25 +25,20 @@ function setupTest() {
   fs.writeFileSync(testMdFile, testMarkdown);
 }
 
-
-
 describe("Static Site CLI Tests", function () {
   before(setupTest);
-
   it("should convert Markdown to HTML", function () {
     convertMarkdown(testMdFile, outputDir, "default");
     assert(fs.existsSync(outputHtmlFile), "HTML file was not created");
   });
-
   it("should include title in HTML output", function () {
     const htmlContent = fs.readFileSync(outputHtmlFile, "utf-8");
-
     assert(
       htmlContent.includes("<title>Test Page</title>"),
       "Title not found in HTML output"
     );
   });
-
+  
   it("should run CLI command successfully", function () {
     execSync(
       `node ${path.join(
