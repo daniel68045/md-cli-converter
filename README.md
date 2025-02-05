@@ -6,19 +6,19 @@ A simple CLI tool that lets you generate static HTML files from Markdown. Suppor
 
 Install globally from [npm](https://www.npmjs.com/package/md-cli-converter):
 
-```
+``` bash
 npm install -g md-cli-converter
 ```
 
 Default use - convert a Markdown file (.md) into an HTML file:
 
-```
+``` bash
 md-to-html notes.md --output site/
 ```
 
 This will convert `notes.md` to `notes.html` and save the output in the `site/` folder and automatically apply the default `styles.css`
 
-```
+``` 
 site/
 │── notes.html
 │── styles.css
@@ -26,13 +26,13 @@ site/
 
 ## Custom Styling (`--css`) - You can use your own CSS file instead of the default `styles.css`:
 
-```
+``` bash
 md-to-html notes.md --output site/ --css styles/custom.css
 ```
 
 Example Directory:
 
-```
+``` 
 my-project/
 │── notes.md
 │── styles/
@@ -44,7 +44,7 @@ my-project/
 
 ## Custom Templates (`--template`) - For a custom HTML structure define your own EJS template:
 
-```
+``` bash
 md-to-html notes.md --output site/ --template templates/my-template.ejs
 ```
 
@@ -61,7 +61,7 @@ my-project/
 
 Example Markdown File (`notes.md`)
 
-```
+``` Markdown
 title: My First Blog Post
 author: First Last
 date: 2025-02-10
@@ -79,7 +79,7 @@ This is an example Markdown file that will be converted into HTML
 
 Generated HTML (`notes.html`)
 
-```
+``` HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,24 +119,24 @@ Generated HTML (`notes.html`)
 
 Converts a Markdown file to HTML
 
-```
+``` bash
 md-to-html <file>
 ```
 
 Specifies the output directory
 
-```
+``` bash
 --output <dir>
 ```
 
 Applies a custom CSS file
 
-```
+``` bash
 --css <file>
 ```
 
 Uses a custom EJS template
 
-```
+``` bash
 --template <file>
 ```
